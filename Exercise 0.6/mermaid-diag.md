@@ -1,6 +1,6 @@
-# Exercise 0.5: Single page app diagram
+# Exercise 0.6: New note in Single page app diagram
 
-Diagram depicting the situation where the user goes to SPA version of the notes app
+Diagram depicting the situation where the user goes to SPA version of the notes app and creates a new note
 
 ```mermaid
 sequenceDiagram

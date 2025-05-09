@@ -7,38 +7,29 @@ sequenceDiagram
     participant browser
     participant server
 
-    Note right of browser: The user filled the form and clicked the save  button
-
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
     activate server
-    server-->>browser: 302 Found
+    server-->>browser: HTML Document
     deactivate server    
 
-    Note left of server: The server responds with an URL Redirect
-
-    Note right of browser: The browser reloads the Notes page
-
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
-    activate server
-    server-->>browser: HTML document
-    deactivate server
+    Note left of server: In the HTML document insde the head tag is link for the CSS file and the JS file
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
     activate server
-    server-->>browser: the css file
+    server-->>browser: CSS file main.css
     deactivate server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
     activate server
-    server-->>browser: the JavaScript file
+    server-->>browser: Javascript file spa.js
     deactivate server
 
-    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
+    Note right of browser: The browser starts executing the JavaScript code that request the JSON data
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
-    server-->>browser: [{"content": ".","date":"2025-05-08T15:43:16.185Z"}, ... ]
+    server-->>browser: [{"content": "tt",  "date": "2025-05-08T16:31:01.057Z"}, ... ]
     deactivate server
 
-    Note right of browser: The browser executes the callback function that renders the notes
+    Note right of browser: The browser executes the handler event
 ```
